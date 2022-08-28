@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="layout.css">
+    <title>BISTRO BABUSHKA</title>
+</head>
+<body>
+    
+    <section> </section>
+
+    <template>
+    
+        <article>
+            <h2 class="navn"></h2>
+            <img class="billede" src="" alt="">
+            <img class="billedurl" src="" alt="">
+            <p class="kategori"></p>          
+            <p class="kortbeskrivelse"></p>    
+            <p class="langbeskrivelse "></p>   
+            <h4 class="pris"></h4>       
+      
+        </article>
+
+    </template>
+        
+
+
+<script>
+
+const url = "https://babushka-dd8a.restdb.io/rest/menu";
+const options = {
+    headers:{
+        'x-apikey': "600ec2fb1346a1524ff12de4"
+    }
+};
+
+async function hentData(){
+    const respons = await fetch (url, options);
+    const json = await respons.json();
+    vis(json);
+}
+
+
+
+
+
+const section = document.querySelector("section")
+const template = document.querySelector("template").content;
+
+function vis (json) {
+    console.log(json);
+
+    json.forEach((ret => {
+       const klon = template.cloneNode(true);
+        klon.querySelector(".billedurl").src = "billeder/" + ret.billednavn;
+        klon.querySelector(".navn").textContent = ret.navn;
+        klon.querySelector(".kategori").textContent = ret.kategori;
+        klon.querySelector(".kortbeskrivelse").textContent = ret.kortbeskrivelse;
+        klon.querySelector(".langbeskrivelse").textContent = ret.langbeskrivelse;
+        klon.querySelector(".pris").textContent = ret.pris + ",-";
+
+
+        section.appendChild(klon);
+
+
+    }));
+
+
+
+
+
+}
+
+hentData(); 
+</script>
+
+
+</body>
+</html>
