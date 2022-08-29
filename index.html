@@ -14,7 +14,7 @@
         <button data-retter= "alle" class="valgt">Alle</button>
         <button data-retter= "forretter">Forretter</button>
         <button data-retter= "hovedretter" >Hovedretter</button>
-        <button data-retter= "deserter">Deserter</button>
+        <button data-retter= "desserter">Deserter</button>
         <button data-retter= "sideorders">Sideorders</button>
         <button data-retter= "drikkevarer">Drikkevarer</button>
 
@@ -45,7 +45,7 @@
 //------------- Lytter efter om DOM er loadet og går til start funktion
 document.addEventListener("DOMContentLoaded", start);
 
-// let kategori;
+let retter;
 let filter = "alle";
 
 
@@ -66,21 +66,25 @@ const options = {
 
 async function hentData(){
     const respons = await fetch (url, options);
-    const json = await respons.json();
-    vis(json);
+    retter = await respons.json();
+    console.log(retter);
+    vis();
 }
 
 
 
 
+//------------- Tilføj eventlistener til buttons
 
 
 const filterknapper = document.querySelectorAll ("nav button");
 filterknapper.forEach(knap => knap.addEventListener ("click", filtrerRetter));
 
+//------------- Funktion filtrerRetter
 
 function filtrerRetter(){
 filter = this.dataset.retter
+vis();
 }
 
 
@@ -98,15 +102,17 @@ const template = document.querySelector("template").content;
 
 //------------- json funktion
 
-function vis(json) {
+function vis() {
     //------------- vis json data i consol.loggen
-    console.log(json);
+    console.log(retter);
 
 
 section.textContent="";
+
     //------------- tilføj data fra json til hver enkelt organiseret element i DOM
 
-    json.forEach((ret => {
+    retter.forEach((ret => {
+
         if(filter == ret.kategori || filter == "alle") {
            const klon = template.cloneNode(true);
         klon.querySelector(".billedurl").src = "billeder/" + ret.billednavn + "-md.jpg";
