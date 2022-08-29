@@ -17,9 +17,7 @@
             <img class="billede" src="" alt="">
             <img class="billedurl" src="" alt="">
             <h2 class="navn"></h2>
-            <p class="kategori"></p>          
             <p class="kortbeskrivelse"></p>    
-            <p class="langbeskrivelse "></p>   
             <h4 class="pris"></h4>       
       
         </article>
@@ -33,9 +31,15 @@
 //------------- Lytter efter om DOM er loadet og går til start funktion
 document.addEventListener("DOMContentLoaded", start);
 
+// let kategori;
+let filter = "hovedretter";
+
 
 //------------- Start funktion
 function start (){
+
+
+
 
 //------------- Find dataerne og load dem
 
@@ -70,16 +74,17 @@ function vis (json) {
     //------------- tilføj data fra json til hver enkelt organiseret element i DOM
 
     json.forEach((ret => {
-       const klon = template.cloneNode(true);
+        if(filter == ret.kategori) {
+           const klon = template.cloneNode(true);
         klon.querySelector(".billedurl").src = "billeder/" + ret.billednavn + "-md.jpg";
         klon.querySelector(".navn").textContent = ret.navn;
-        // klon.querySelector(".kategori").textContent = ret.kategori;
         klon.querySelector(".kortbeskrivelse").textContent = ret.kortbeskrivelse;
-        //klon.querySelector(".langbeskrivelse").textContent = ret.langbeskrivelse;
         klon.querySelector(".pris").textContent = ret.pris + ",-";
 
         section.appendChild(klon);
-
+  
+        }
+      
 
     }));
 
