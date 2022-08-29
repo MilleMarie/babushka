@@ -1,0 +1,28 @@
+img {
+    max-width: 90%;
+}
+
+section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 5%;
+    margin-inline: 6%;
+}
+
+article {
+    outline: orange solid 2px;
+    padding: 5%;
+}
+
+
+
+@media (min-width: 700px) {
+ 
+    section {
+
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        margin-inline: 10%;
+    }
+    
+}
