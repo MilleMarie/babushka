@@ -9,6 +9,18 @@
 </head>
 <body>
     
+    <h1>Overskrift</h1>
+    <nav>
+        <button data-retter= "alle" class="valgt">Alle</button>
+        <button data-retter= "forretter">Forretter</button>
+        <button data-retter= "hovedretter" >Hovedretter</button>
+        <button data-retter= "deserter">Deserter</button>
+        <button data-retter= "sideorders">Sideorders</button>
+        <button data-retter= "drikkevarer">Drikkevarer</button>
+
+
+    </nav>
+
     <section> </section>
 
     <template>
@@ -18,6 +30,8 @@
             <img class="billedurl" src="" alt="">
             <h2 class="navn"></h2>
             <p class="kortbeskrivelse"></p>    
+            <p class="kategori"></p>          
+
             <h4 class="pris"></h4>       
       
         </article>
@@ -32,14 +46,14 @@
 document.addEventListener("DOMContentLoaded", start);
 
 // let kategori;
-let filter = "hovedretter";
+let filter = "alle";
+
+
+
 
 
 //------------- Start funktion
 function start (){
-
-
-
 
 //------------- Find dataerne og load dem
 
@@ -59,6 +73,23 @@ async function hentData(){
 
 
 
+
+
+const filterknapper = document.querySelectorAll ("nav button");
+filterknapper.forEach(knap => knap.addEventListener ("click", filtrerRetter));
+
+
+function filtrerRetter(){
+filter = this.dataset.retter
+}
+
+
+
+
+
+
+
+
 //------------- constanter laves til section og template
 
 const section = document.querySelector("section")
@@ -67,18 +98,21 @@ const template = document.querySelector("template").content;
 
 //------------- json funktion
 
-function vis (json) {
+function vis(json) {
     //------------- vis json data i consol.loggen
     console.log(json);
 
+
+section.textContent="";
     //------------- tilføj data fra json til hver enkelt organiseret element i DOM
 
     json.forEach((ret => {
-        if(filter == ret.kategori) {
+        if(filter == ret.kategori || filter == "alle") {
            const klon = template.cloneNode(true);
         klon.querySelector(".billedurl").src = "billeder/" + ret.billednavn + "-md.jpg";
         klon.querySelector(".navn").textContent = ret.navn;
         klon.querySelector(".kortbeskrivelse").textContent = ret.kortbeskrivelse;
+        klon.querySelector(".kategori").textContent = ret.kategori;
         klon.querySelector(".pris").textContent = ret.pris + ",-";
 
         section.appendChild(klon);
