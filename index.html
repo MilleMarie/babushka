@@ -4,40 +4,105 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="layout.css">
     <title>BISTRO BABUSHKA</title>
 </head>
 <body>
     <header>
-    <h1>Alle retter</h1>
-    <nav>
-        <button data-retter= "alle" class="valgt">Alle</button>
-        <button data-retter= "forretter">Forretter</button>
-        <button data-retter= "hovedretter" >Hovedretter</button>
-        <button data-retter= "desserter">Desserter</button>
-        <button data-retter= "sideorders">Sideorders</button>
-        <button data-retter= "drikkevarer">Drikkevarer</button>
-    </nav>  
+       
+        <ul class="nav1">
+            <li>Forside</li>
+            <li class="menubar">Menu</li>
+        </ul>
+     
+        <img class="logo"; src="babushka_logo.png" alt="">
+
+
+        <ul class="nav2">
+            <li>Omkring</li>
+            <li>Kontakt</li>
+        </ul>
+
+
     </header>
 
+<main>
 
+<h1 class="menuheading">MENU</h1>
+
+<div class="menumain">
+    
+    <div class="sorter">
+        <h2 class="sorterheading">Sorter</h2>
+        <h3 class="kategoriheading">Alle retter</h3>
+        <nav>
+            <button data-retter= "alle" class="valgt">Alle</button>
+            <button data-retter= "forretter">Forretter</button>
+            <button data-retter= "hovedretter" >Hovedretter</button>
+            <button data-retter= "desserter">Desserter</button>
+            <button data-retter= "sideorders">Sideorders</button>
+            <button data-retter= "drikkevarer">Drikkevarer</button>
+        </nav>  
+    </div>
+    
     <section> </section>
 
     <template>
-    
         <article>
             <img class="billede" src="" alt="">
             <img class="billedurl" src="" alt="">
             <h2 class="navn"></h2>
             <p class="kortbeskrivelse"></p>    
-            <!-- <p class="kategori"></p>           -->
-            <h4 class="pris"></h4>       
-      
+            <hr>
+            <div class="pris_detal">
+                <h4 class="pris"></h4>   
+                <button class="detaljerknap">Detaljer</button>  
+            </div>
+          
         </article>
-
     </template>
         
 
+
+
+    <div id="popup">
+        <article class="articlepopup">
+            <div class="tilbageknap_billede">
+            <button class="detaljerknap_luk">Tilbage</button>  
+            <img class="billedurl" src="" alt="">  
+            </div>
+         
+            <div class="detaljerinfo">
+                <h2 class="navn"></h2>
+                <p class="langbeskrivelse"></p>    
+                <h4 class="pris"></h4> 
+            </div>
+              
+        </article>
+    </div>
+
+
+
+</div>
+   
+
+</main>
+  
+
+<footer>
+    <hr>
+    <h6>Copyright Bistro Babushka 2022</h6>
+
+</footer>
 
 <script>
 
@@ -85,7 +150,7 @@ filterknapper.forEach(knap => knap.addEventListener ("click", filtrerRetter));
 //------------- Funktion filtrerRetter (sker når man trykker på knapper)
 
 function filtrerRetter(){
-const heading = document.querySelector ("header h1")
+const heading = document.querySelector (".kategoriheading")
 filter = this.dataset.retter
 heading.textContent = this.textContent;
 
@@ -123,16 +188,36 @@ function vis() {
 
         if(filter == ret.kategori || filter == "alle") {
            const klon = template.cloneNode(true);
+        klon.querySelector(".detaljerknap").addEventListener("click", ()=> visDetaljer(ret));
         klon.querySelector(".billedurl").src = "billeder/" + ret.billednavn + "-md.jpg";
         klon.querySelector(".navn").textContent = ret.navn;
         klon.querySelector(".kortbeskrivelse").textContent = ret.kortbeskrivelse;
-        // klon.querySelector(".kategori").textContent = ret.kategori;
         klon.querySelector(".pris").textContent = ret.pris + ",-";
+        klon.querySelector(".detaljerknap").
 
+
+
+detaljerknap
         section.appendChild(klon);
         }
 
     }));
+
+}
+
+
+document.querySelector(".detaljerknap_luk").addEventListener("click", () => (popup.style.display = "none"));
+
+
+function visDetaljer(rettensData){
+console.log(rettensData);
+const popup =document.querySelector("#popup");
+popup.style.display="flex";
+popup.querySelector("h2").textContent = rettensData.navn;
+popup.querySelector("img").src = "billeder/" + rettensData.billednavn + "-md.jpg";
+popup.querySelector("p").textContent = rettensData.langbeskrivelse;
+popup.querySelector("h4").textContent = rettensData.pris + ",-";
+
 
 }
 

@@ -1,47 +1,557 @@
+/* -------- GENERELT -------- */
+
 img {
-    max-width: 90%;
+    max-width: 100%;
 }
+
+body {
+    background-color: #E3E1D8;
+    color: #363A45;
+    margin-inline: 10%;
+}
+
+
+
+
+
+
+
+/* -------- HEADER -------- */
+
+header{
+    display: grid;
+    justify-content: space-between;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+    margin-bottom: 6rem;
+}
+
+@font-face {
+    font-family: summerdream;
+    src: url(summerdreamsans.ttf);
+  }
+  
+  .nav1{order:2;}
+  .logo{order:1;}
+  .nav2{order:3;}
+
+
+
+
+  .nav1 {
+    /*! display: flex; */
+   list-style: none;
+   gap: 2rem;
+   /*! margin-top: 3.5rem; */
+   padding-left: 0;
+   font-family: 'Work Sans', sans-serif;   
+   font-weight: 600;
+   font-size: 80%;
+   text-transform: uppercase;
+
+    text-align: right;
+}
+
+.menubar {
+text-decoration: underline #AA8913 1.5px;
+}
+
+.logo {
+    width: 100px;
+}
+
+
+.nav2 {
+   list-style: none;
+   font-family: 'Work Sans', sans-serif;   
+   font-weight: 600;
+   font-size: 80%;
+   padding-left: 0;
+   text-transform: uppercase;
+   grid-column: 2;
+   text-align: right;
+   margin-top: -26px;
+
+}
+
+
+/* -------- MAIN -------- */
+
+.menuheading{
+    font-family: summerdream;
+    font-size: 500%;
+    margin-block: 0;
+}
+
+
+
+
+
+/* -------- SELVE MENUEN -------- */
 
 section {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
-    margin-top: 5%;
-    margin-inline: 6%;
 }
 
-article {
-    border: black solid 2px;
-    padding: 5%;
+
+.pris {
+    color: #AA8913;
+    font-family: 'Work Sans', sans-serif;   
+    font-size: 120%;
 }
 
-h1 {
+
+h2 {
+    font-family: 'Work Sans', sans-serif;   
+    font-weight: 600;
+    font-size: 100%;
+    text-transform: uppercase;
+}
+
+p {
+    font-family: 'Work Sans', sans-serif;   
+    font-weight: 300;
+    font-size: 70%;
+}
+
+.detaljerknap {
+    border: none;
+    border-radius: 1rem;
+    color: white;
+    background-color: #AA8913; 
+    font-family: 'Work Sans', sans-serif;
+    text-transform: uppercase;
+    font-size: 70%;
+    padding-inline: 10%;
+    padding-block: 3%;
+}
+
+.pris_detal {
     display: flex;
-    justify-content: center;   
+    justify-content: space-between;
+    align-items: center;
 }
+
+
+
+
+
+/* -------- SELVE SORTERINGEN -------- */
+
+.sorterheading {
+    font-family: summerdream;
+    font-size: 186%;
+    margin-bottom: 5px;
+  
+}
+
+.kategoriheading{
+    font-family: summerdream;
+    font-size: 80%;
+    margin-top: 0;
+}
+
 
 nav {
  display: flex;
- justify-content: center;   
  gap: 1rem;
-
+ overflow: auto;
+ white-space: nowrap;
 }
+
+
 button {
     border: none;
+    background-color: #E3E1D8;
+    display: grid;
+    gap: 1rem;
+    font-family: 'Work Sans', sans-serif;
+    text-transform: uppercase;
 }
 
 .valgt {
-border: black solid 2px;
+    text-decoration: underline #AA8913 1.5px;
 }
 
 
 
-@media (min-width: 700px) {
- 
-    section {
 
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        margin-inline: 10%;
+
+
+
+
+/* -------- SELVE POPUP -------- */
+
+#popup {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #000000aa;
+    display: flex;
+    justify-content: center;
+    display: none;
+}
+
+#popup article{
+    position: fixed;
+    background-color: #E3E1D8;
+    width: 20rem;
+    padding: 4%;
+    height: 31rem;
+    top: 8%;
+}
+
+#popup img{
+    max-width: 20rem;
+}
+
+
+
+.tilbageknap_billede {
+    display: grid;
+    align-items: end;
+    justify-items: start;
+}
+
+.detaljerinfo{
+    display: grid;
+    align-content: space-around;
+    justify-items: end;
+}
+
+.detaljerinfo h2 {
+font-size: 150%;
+font-weight: 900;
+text-align: right;
+margin-bottom: 0;
+margin-top: 5%;
+
+}
+.detaljerinfo p {
+font-size: 65%;
+text-align: right;
+margin-top: 5%;
+margin-left: 15%;
+}
+
+.detaljerinfo h4 {
+    font-size: 200%;
+    text-align: right;
+    margin-top: 0%;
+}
+
+
+.detaljerknap_luk {
+    border: none;
+    border-radius: 1rem;
+    color: white;
+    background-color: #AA8913;
+    font-family: 'Work Sans', sans-serif;
+    text-transform: uppercase;
+    font-size: 70%;
+    padding-inline: 5%;
+    padding-block: 2%;
+    margin-top: 10%;
+    margin-bottom: 5%;
+}
+
+
+
+
+
+
+/* -------- SELVE FOOTER -------- */
+
+footer {
+    margin-top: 10rem;
+}
+
+h6 {
+    font-family: summerdream;
+    font-size: 50%;
+    display: flex;
+    justify-content: center;
+}  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ @media screen and (min-width: 900px){
+  
+  
+/* -------- GENERELT -------- */
+body {
+    background-color: #E3E1D8;
+    color: #363A45;
+    margin-inline: 10%;
+}    
+
+
+
+
+
+
+/* -------- HEADER -------- */
+
+header{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+    margin-bottom: 8rem;
+}
+
+@font-face {
+    font-family: summerdream;
+    src: url(summerdreamsans.ttf);
+  }
+  
+  .nav1{order:1;}
+  .logo{order:2;}
+  .nav2{order:3;}
+
+
+.nav1 {
+    display: flex;
+   list-style: none;
+   gap: 4rem;
+   margin-top: 3.5rem;
+   padding-left: 0;
+   font-family: 'Work Sans', sans-serif;   
+   font-weight: 600;
+   font-size: 100%;
+   text-transform: uppercase;
+
+}
+
+.menubar {
+text-decoration: underline #AA8913 1.5px;
+}
+
+.logo {
+    width: 15%;
+    padding-left: 4rem;
+}
+
+
+.nav2 {
+    display: flex;
+   list-style: none;
+   gap: 4rem;
+   margin-top: 3.5rem;
+   font-family: 'Work Sans', sans-serif;   
+   font-weight: 600;
+   font-size: 100%;
+
+   text-transform: uppercase;
+}
+
+
+
+
+
+
+
+
+/* -------- MAIN -------- */
+
+.menumain {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
     }
-    
+
+.menuheading{
+    font-size: 1000%;
+
+}
+
+.sorter{order:2;}
+section{order:1;}
+
+
+/* -------- SELVE MENUEN -------- */
+
+section {
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+
+/* -------- SELVE SORTERINGEN -------- */
+
+
+
+
+.sorterheading {
+    display: grid;
+    justify-content: right; 
+    font-family: summerdream;
+    font-size: 186%;
+    margin-bottom: 0;
+  
+}
+
+.kategoriheading{
+    display: grid;
+    justify-content: right;   
+    font-family: summerdream;
+    font-size: 80%;
+    margin-top: 29px;
+}
+
+
+nav {
+ display: grid;
+ justify-content: right;   
+ gap: 1rem;
+ margin-top: 2rem;
+}
+
+
+button {
+    border: none;
+    background-color: #E3E1D8;
+    display: grid;
+    justify-content: right;   
+    gap: 1rem;
+    font-family: 'Work Sans', sans-serif;
+    text-transform: uppercase;
+}
+
+.valgt {
+    text-decoration: underline #AA8913 1.5px;
+}
+
+
+
+/* -------- SELVE POPUP -------- */
+
+
+#popup {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #000000aa;
+    display: flex;
+    justify-content: center;
+    display: none;
+}
+
+#popup article{
+    position: fixed;
+    background-color: #E3E1D8;
+    height: 25rem;
+    width: 60rem;
+    top: 15%;
+    padding: 4%;
+}
+
+#popup img{
+    max-width: 25rem;
+}
+
+.articlepopup {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.tilbageknap_billede {
+    display: grid;
+    align-items: end;
+    justify-items: start;
+}
+
+.detaljerinfo{
+    display: grid;
+    align-content: space-around;
+    justify-items: end;
+}
+
+.detaljerinfo h2 {
+font-size: 400%;
+font-weight: 900;
+text-align: right;
+margin-bottom: 0;
+margin-top: 0;
+
+}
+.detaljerinfo p {
+font-size: 100%;
+text-align: right;
+}
+
+.detaljerinfo h4 {
+    font-size: 400%;
+    text-align: right;
+    margin: 0;
+}
+
+
+.detaljerknap_luk {
+    border: none;
+    border-radius: 1rem;
+    color: white;
+    background-color: #AA8913;
+    font-family: 'Work Sans', sans-serif;
+    text-transform: uppercase;
+    font-size: 70%;
+    padding-inline: 5%;
+    padding-block: 2%;
+    margin-top: 15%;
+}
+
+
+
+
+
+
+/* -------- SELVE FOOTER -------- */
+
+footer {
+    margin-top: 10rem;
+}
+
+h6 {
+    font-family: summerdream;
+    font-size: 50%;
+    display: flex;
+    justify-content: center;
+}  
+
 }
